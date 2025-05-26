@@ -1,0 +1,588 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <style>
+    .cube {
+      animation: moveCube 3s ease-in-out forwards;
+    }
+    
+    @keyframes moveCube {
+      0% { transform: translate(var(--start-x), var(--start-y)); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    .final-cube {
+      opacity: 0;
+      animation: fadeInCube 2s ease-in-out 3s forwards;
+    }
+    
+    @keyframes fadeInCube {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .initial-cubes {
+      opacity: 1;
+      animation: fadeOutCubes 1s ease-in-out 3s forwards;
+    }
+    
+    @keyframes fadeOutCubes {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    .vertical-slice-line {
+      opacity: 0;
+      stroke-dasharray: 5,5;
+      animation: fadeInSlice 1s ease-in-out 5s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    @keyframes fadeInSlice {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .main-cube-v {
+      opacity: 0;
+      animation: fadeInMainCube 1s ease-in-out 6s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    @keyframes fadeInMainCube {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .thin-slice-v {
+      opacity: 0;
+      animation: moveSliceVertical 2s ease-in-out 6s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    @keyframes moveSliceVertical {
+      0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+      20% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+      60% { opacity: 1; transform: translate(80px, 0) rotate(0deg); }
+      100% { opacity: 1; transform: translate(150px, 0) rotate(90deg); }
+    }
+    
+    .cross-section-v {
+      opacity: 0;
+      animation: showCrossSectionV 1s ease-in-out 8s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    @keyframes showCrossSectionV {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .reset-cube {
+      opacity: 0;
+      animation: resetCubeShow 1s ease-in-out 11s forwards, fadeOutReset 1s ease-in-out 17s forwards;
+    }
+    
+    @keyframes resetCubeShow {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes fadeOutReset {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    .horizontal-slice-line {
+      opacity: 0;
+      stroke-dasharray: 5,5;
+      animation: fadeInHSlice 1s ease-in-out 12s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    @keyframes fadeInHSlice {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .main-cube-h {
+      opacity: 0;
+      animation: fadeInMainCubeH 1s ease-in-out 13s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    @keyframes fadeInMainCubeH {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .thin-slice-h {
+      opacity: 0;
+      animation: moveSliceHorizontal 2s ease-in-out 13s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    @keyframes moveSliceHorizontal {
+      0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+      20% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+      60% { opacity: 1; transform: translate(0, 80px) rotate(0deg); }
+      100% { opacity: 1; transform: translate(150px, 80px) rotate(0deg); }
+    }
+    
+    .cross-section-h {
+      opacity: 0;
+      animation: showCrossSectionH 1s ease-in-out 15s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    @keyframes showCrossSectionH {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes fadeOutAll {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    /* NEW ANIMATIONS FOR FRONTAL SLICE */
+    .final-reset-cube {
+      opacity: 0;
+      animation: finalResetShow 1s ease-in-out 18s forwards;
+    }
+    
+    @keyframes finalResetShow {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .frontal-slice-line {
+      opacity: 0;
+      stroke-dasharray: 5,5;
+      animation: fadeInHSlice 1s ease-in-out 19s forwards, fadeOutAll 1s ease-in-out 22s forwards;
+    }
+    
+    @keyframes fadeInFSlice {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .main-cube-f {
+      opacity: 0;
+      animation: fadeInMainCubeF 5s ease-in-out 24s forwards;
+    }
+    
+    @keyframes fadeInMainCubeF {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .thin-slice-f {
+      opacity: 0;
+      animation: moveSliceFrontal 2s ease-in-out 18s forwards;
+    }
+    
+    @keyframes moveSliceFrontal {
+      0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+      20% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+      60% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+      100% { opacity: 1; transform: translate(150px, 0) rotate(0deg); }
+    }
+    
+    .cross-section-f {
+      opacity: 0;
+      animation: showCrossSectionF 1s ease-in-out 21s forwards;
+    }
+    
+    @keyframes showCrossSectionF {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .label0 {
+      font-family: Verdana, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 1;
+      animation: fadeOutAll 0.1s ease-in-out 4s forwards;
+    }
+    
+    .label1 {
+      font-family: Verdana, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 0.1s ease-in-out 4s forwards, fadeOutAll 0.1s ease-in-out 10s forwards;
+    }
+
+    .label2 {
+      font-family: Verdana, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 0.1s ease-in-out 11s forwards, fadeOutAll 0.1s ease-in-out 17s forwards;
+    }
+
+    .label3 {
+      font-family: Verdana, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 0.1s ease-in-out 18s forwards, fadeOutAll .1s ease-in-out 24s forwards;
+    }
+    
+    .slice-label-v {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 7s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    .cross-section-label-v {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 8.5s forwards, fadeOutAll 1s ease-in-out 10s forwards;
+    }
+    
+    .slice-label-h {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 14s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    .cross-section-label-h {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 15.5s forwards, fadeOutAll 1s ease-in-out 17s forwards;
+    }
+    
+    .slice-label-f {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 21s forwards;
+    }
+    
+    .cross-section-label-f {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-anchor: middle;
+      opacity: 0;
+      animation: fadeInLabel 1s ease-in-out 22.5s forwards;
+    }
+    
+    @keyframes fadeInLabel {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .title {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="50" class="title">Data collection and analysis</text>
+  <!-- Label0 -->
+   <text x="400" y="120" class="label0">Step1: Collecting and cleaning data from various sources</text>
+
+  <!-- Label1 -->
+   <text x="400" y="120" class="label1">Step2: Slicing data along time</text>
+
+  <!-- Label2 -->
+   <text x="400" y="120" class="label2">Step3: Slicing data along socio-economic features</text>
+
+  <!-- Label3 -->
+   <text x="400" y="120" class="label3">Step4: Slicing data along geographical locations</text>
+  
+  <g class="initial-cubes">
+    <!-- Cube 1: Front Bottom Left - Light Blue -->
+    <g transform="translate(400, 250)">
+      <g style="--start-x: -200px; --start-y: 100px;" class="cube">
+        <!-- Front face -->
+        <polygon points="0,0 0,50 50,50 50,0" fill="#64B5F6" stroke="#1565C0" stroke-width="1.5" />
+        <!-- Top face -->
+        <polygon points="0,0 50,0 75,-25 25,-25" fill="#90CAF9" stroke="#1565C0" stroke-width="1.5" />
+        <!-- Right face -->
+        <polygon points="50,0 75,-25 75,25 50,50" fill="#42A5F5" stroke="#1565C0" stroke-width="1.5" />
+      </g>
+    </g>
+    
+    <!-- Cube 2: Front Bottom Right - Medium Blue -->
+    <g transform="translate(400, 250)">
+      <g style="--start-x: 200px; --start-y: 100px;" class="cube">
+        <!-- Front face -->
+        <polygon points="50,0 50,50 100,50 100,0" fill="#2196F3" stroke="#0D47A1" stroke-width="1.5" />
+        <!-- Top face -->
+        <polygon points="50,0 100,0 125,-25 75,-25" fill="#64B5F6" stroke="#0D47A1" stroke-width="1.5" />
+        <!-- Right face -->
+        <polygon points="100,0 125,-25 125,25 100,50" fill="#1E88E5" stroke="#0D47A1" stroke-width="1.5" />
+      </g>
+    </g>
+    
+    <!-- Cube 3: Back Bottom Left - Deep Blue -->
+    <g transform="translate(400, 250)">
+      <g style="--start-x: -200px; --start-y: -100px;" class="cube">
+        <!-- Front face -->
+        <polygon points="0,50 0,100 50,100 50,50" fill="#1976D2" stroke="#0D47A1" stroke-width="1.5" />
+        <!-- Top face is not visible -->
+        <!-- Right face -->
+        <polygon points="50,50 75,25 75,75 50,100" fill="#1565C0" stroke="#0D47A1" stroke-width="1.5" />
+      </g>
+    </g>
+    
+    <!-- Cube 4: Back Bottom Right - Navy Blue -->
+    <g transform="translate(400, 250)">
+      <g style="--start-x: 200px; --start-y: -100px;" class="cube">
+        <!-- Front face -->
+        <polygon points="50,50 50,100 100,100 100,50" fill="#0D47A1" stroke="#002171" stroke-width="1.5" />
+        <!-- Top face is not visible -->
+        <!-- Right face -->
+        <polygon points="100,50 125,25 125,75 100,100" fill="#0A3880" stroke="#002171" stroke-width="1.5" />
+      </g>
+    </g>
+    
+    <!-- Hidden faces to complete the initial cube structure -->
+    <g transform="translate(400, 250)" style="opacity: 0; animation: fadeIn 0.5s ease-in-out 3s forwards, fadeOutAll 1s ease-in-out 10s forwards;">
+      <!-- Back faces -->
+      <polygon points="25,-25 75,-25 75,25 25,25" fill="#BBDEFB" stroke="#1565C0" stroke-width="1" stroke-dasharray="3,3" />
+      <polygon points="75,-25 125,-25 125,25 75,25" fill="#90CAF9" stroke="#1565C0" stroke-width="1" stroke-dasharray="3,3" />
+    </g>
+  </g>
+  
+  <!-- Final Unified Blue Cube (Will be hidden when slice happens) -->
+  <g transform="translate(400, 250)" class="final-cube" style="animation: fadeInCube 2s ease-in-out 3s forwards, fadeOutCubes 1s ease-in-out 6s forwards;">
+    <!-- Front face -->
+    <polygon points="0,0 0,100 100,100 100,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face -->
+    <polygon points="0,0 100,0 125,-25 25,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face -->
+    <polygon points="100,0 125,-25 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <!-- Left and back edges for completeness -->
+    <line x1="0" y1="0" x2="25" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="125" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="25" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- VERTICAL SLICE ANIMATION -->
+  
+  <!-- Slice Lines (Dotted vertical lines for the thin slice) -->
+  <g transform="translate(400, 250)" class="vertical-slice-line">
+    <!-- First vertical slice line (front) -->
+    <line x1="45" y1="-25" x2="45" y2="100" stroke="#FF5722" stroke-width="2" />
+    <!-- First vertical slice line (top) -->
+    <line x1="45" y1="-25" x2="70" y2="-50" stroke="#FF5722" stroke-width="2" />
+    <!-- First vertical slice line (back, dotted) -->
+    <line x1="70" y1="-50" x2="70" y2="75" stroke="#FF5722" stroke-width="2" />
+    <!-- First vertical slice line (bottom, dotted) -->
+    <line x1="70" y1="75" x2="45" y2="100" stroke="#FF5722" stroke-width="2" />
+    
+    <!-- Second vertical slice line (front) -->
+    <line x1="55" y1="-25" x2="55" y2="100" stroke="#FF5722" stroke-width="2" />
+    <!-- Second vertical slice line (top) -->
+    <line x1="55" y1="-25" x2="80" y2="-50" stroke="#FF5722" stroke-width="2" />
+    <!-- Second vertical slice line (back, dotted) -->
+    <line x1="80" y1="-50" x2="80" y2="75" stroke="#FF5722" stroke-width="2" />
+    <!-- Second vertical slice line (bottom, dotted) -->
+    <line x1="80" y1="75" x2="55" y2="100" stroke="#FF5722" stroke-width="2" />
+  </g>
+  
+  <!-- Main Cube (left portion) -->
+  <g transform="translate(400, 250)" class="main-cube-v">
+    <!-- Front face (left portion) -->
+    <polygon points="0,0 0,100 45,100 45,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face (left portion) -->
+    <polygon points="0,0 45,0 70,-25 25,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face (left cut) -->
+    <polygon points="45,0 70,-25 70,75 45,100" fill="#90CAF9" stroke="#0D47A1" stroke-width="2" />
+    <!-- Left and back edges -->
+    <line x1="0" y1="0" x2="25" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="70" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="25" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="70" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  
+  <!-- Main Cube (right portion) -->
+  <g transform="translate(400, 250)" class="main-cube-v">
+    <!-- Front face (right portion) -->
+    <polygon points="55,0 55,100 100,100 100,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face (right portion) -->
+    <polygon points="55,0 100,0 125,-25 80,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face -->
+    <polygon points="100,0 125,-25 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <!-- Left face (right cut) -->
+    <polygon points="55,0 80,-25 80,75 55,100" fill="#90CAF9" stroke="#0D47A1" stroke-width="2" />
+    <!-- Back edges -->
+    <line x1="80" y1="-25" x2="125" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="80" y1="75" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Vertical Cross-Section View (appears after slice rotates) -->
+  <g transform="translate(600, 250)" class="cross-section-v">
+    <!-- The vertical cross-section rectangle with data patterns -->
+    <rect x="-50" y="-50" width="100" height="100" fill="#FAC898" stroke="#E3735E" stroke-width="2" />
+    
+    <!-- Data patterns within the vertical cross-section -->
+    <circle cx="-20" cy="-20" r="10" fill="#FBCEB1" stroke="#C04000" stroke-width="1" />
+    <circle cx="20" cy="-10" r="15" fill="#FF5722" stroke="#C04000" stroke-width="1" />
+    <circle cx="0" cy="20" r="20" fill="#FA8072" stroke="#C04000" stroke-width="1" />
+    <circle cx="-25" cy="30" r="8" fill="#CC5500" stroke="#C04000" stroke-width="1" />
+    <circle cx="30" cy="25" r="12" fill="#E97451" stroke="#C04000" stroke-width="1" />
+    
+    <!-- Grid lines to show data structure -->
+    <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="0" x2="50" y2="0" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="25" x2="50" y2="25" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-25" y1="-50" x2="-25" y2="50" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="25" y1="-50" x2="25" y2="50" stroke="#FFF5EE" stroke-width="1" stroke-dasharray="3,3" />
+  </g>
+  
+  <!-- RESET AND HORIZONTAL SLICE ANIMATION -->
+  
+  <!-- Reset Cube (shown after vertical slice animation completes) -->
+  <g transform="translate(400, 250)" class="reset-cube">
+    <!-- Front face -->
+    <polygon points="0,0 0,100 100,100 100,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face -->
+    <polygon points="0,0 100,0 125,-25 25,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face -->
+    <polygon points="100,0 125,-25 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <!-- Left and back edges for completeness -->
+    <line x1="0" y1="0" x2="25" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="125" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="25" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Horizontal Slice Lines -->
+  <g transform="translate(400, 250)" class="horizontal-slice-line">
+    <!-- First horizontal slice line (front) -->
+    <line x1="0" y1="45" x2="100" y2="45" stroke="#4CAF50" stroke-width="2" />
+    <!-- First horizontal slice line (right side) -->
+    <line x1="100" y1="45" x2="125" y2="20" stroke="#4CAF50" stroke-width="2" />
+    <!-- First horizontal slice line (back, dotted) -->
+    <line x1="25" y1="20" x2="25" y2="30" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Main Cube (lower portion) -->
+  <g transform="translate(400, 250)" class="main-cube-h">
+    <!-- Front face (lower portion) -->
+    <polygon points="0,100 0,55 100,100 100,55" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="0,55 0,100 100,100 100,55" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <polygon points="0,55 100,55" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="0,45 25,20" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="25,20 125,20" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+
+
+
+    <!-- Right face (lower portion) -->
+    <polygon points="100,55 125,30 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <polygon points="100,55 125,30 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <polygon points="100,55 125,30" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+
+
+
+    <!-- Left face (lower portion, dotted) -->
+    <line x1="0" y1="55" x2="25" y2="30" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="30" x2="25" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4" />
+    <!-- Back face (lower portion, dotted) -->
+    <line x1="25" y1="30" x2="125" y2="30" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="125" y1="30" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="75" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Horizontal Cross-Section View -->
+  <g transform="translate(600, 250)" class="cross-section-h">
+    <!-- The horizontal cross-section rectangle with data patterns -->
+    <rect x="-50" y="-50" width="100" height="100" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+    
+    <!-- Data patterns within the horizontal cross-section (different than vertical) -->
+    <rect x="-40" y="-40" width="25" height="25" fill="#81C784" stroke="#2E7D32" stroke-width="1" />
+    <rect x="0" y="-30" width="30" height="20" fill="#66BB6A" stroke="#2E7D32" stroke-width="1" />
+    <rect x="-25" y="0" width="50" height="15" fill="#4CAF50" stroke="#2E7D32" stroke-width="1" />
+    <rect x="-40" y="25" width="20" height="15" fill="#388E3C" stroke="#2E7D32" stroke-width="1" />
+    <rect x="15" y="15" width="25" height="25" fill="#2E7D32" stroke="#2E7D32" stroke-width="1" />
+    
+    <!-- Grid lines in horizontal cross-section (different pattern) -->
+    <line x1="-50" y1="-20" x2="50" y2="-20" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="10" x2="50" y2="10" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="40" x2="50" y2="40" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-30" y1="-50" x2="-30" y2="50" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="30" y1="-50" x2="30" y2="50" stroke="#A5D6A7" stroke-width="1" stroke-dasharray="3,3" />
+  </g>
+  
+  <!-- FINAL RESET AND FRONTAL SLICE ANIMATION -->
+  
+  <!-- Final Reset Cube (shown after horizontal slice animation completes) -->
+  <g transform="translate(400, 250)" class="final-reset-cube">
+    <!-- Front face -->
+    <polygon points="0,0 0,100 100,100 100,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face -->
+    <polygon points="0,0 100,0 125,-25 25,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face -->
+    <polygon points="100,0 125,-25 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    <!-- Left and back edges for completeness -->
+    <line x1="0" y1="0" x2="25" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="125" y2="-25" stroke="#0D47A1" stroke-width="2" />
+    <line x1="25" y1="-25" x2="25" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="125" y2="75" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="0" y2="100" stroke="#0D47A1" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Frontal Slice Lines (parallel to the screen) -->
+  <g transform="translate(400, 250)" class="frontal-slice-line">
+    <!-- First slice is at z=45 from the front (45% into the cube depth) -->
+    <polygon points="25,-25 125,-25 125,75 25,75" fill="none" stroke="#9C27B0" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Second slice plane (back of the slice - slightly offset) -->
+    <polygon points="35,-15 115,-15 115,65 35,65" fill="#CBC3E3" stroke="#9C27B0" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="25" y1="-25" x2="35" y2="-15" stroke="#9C27B0" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="125" y1="-25" x2="115" y2="-15" stroke="#9C27B0" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="125" y1="75" x2="115" y2="65" stroke="#9C27B0" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="25" y1="75" x2="35" y2="65" stroke="#9C27B0" stroke-width="2" stroke-dasharray="4,4" />
+  </g>
+  
+  <!-- Main Cube (front portion - before the slice) -->
+  <g transform="translate(400, 250)" class="main-cube-f">
+    <!-- Front face -->
+    <polygon points="0,0 0,100 100,100 100,0" fill="#1976D2" stroke="#0D47A1" stroke-width="2" />
+    <!-- Top face -->
+    <polygon points="0,0 100,0 125,-25 25,-25" fill="#42A5F5" stroke="#0D47A1" stroke-width="2" />
+    <!-- Right face -->
+    <polygon points="100,0 125,-25 125,75 100,100" fill="#1565C0" stroke="#0D47A1" stroke-width="2" />
+    
+    <!-- We'll make the front face semi-transparent to see the slice -->
+    <polygon points="0,0 0,100 100,100 100,0" fill="#1976D2" fill-opacity="0.6" stroke="none" />
+  </g>
+  
+  <!-- Frontal Cross-Section View (appears after slice moves) -->
+  <g transform="translate(600, 250)" class="cross-section-f">
+    <!-- The frontal cross-section rectangle with data patterns -->
+    <rect x="-50" y="-50" width="100" height="100" fill="#F3E5F5" stroke="#4A148C" stroke-width="2" />
+    
+    <!-- Data patterns within the frontal cross-section (purple theme) -->
+    <polygon points="-40,-40 -15,-40 -5,-20 -30,-10" fill="#CE93D8" stroke="#4A148C" stroke-width="1" />
+    <polygon points="-5,-30 20,-40 30,-15 10,0" fill="#BA68C8" stroke="#4A148C" stroke-width="1" />
+    <polygon points="-20,0 10,10 0,30 -30,25" fill="#AB47BC" stroke="#4A148C" stroke-width="1" />
+    <polygon points="20,5 40,-10 35,20 15,25" fill="#9C27B0" stroke="#4A148C" stroke-width="1" />
+    <polygon points="-15,30 15,40 -10,45 -40,35" fill="#8E24AA" stroke="#4A148C" stroke-width="1" />
+    
+    <!-- Grid lines in frontal cross-section -->
+    <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="0" x2="50" y2="0" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-50" y1="25" x2="50" y2="25" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-25" y1="-50" x2="-25" y2="50" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="25" y1="-50" x2="25" y2="50" stroke="#D1C4E9" stroke-width="1" stroke-dasharray="3,3" />
+  </g>
+</svg>

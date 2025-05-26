@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Background -->
+  <rect width="300" height="400" fill="#ffffff"/>
+  
+  <!-- Rubber sheet -->
+  <rect x="25" y="40" width="550" height="320" fill="#eeeeee"/>
+  
+  <!-- Gradient definitions for shadows -->
+  <defs>
+    <radialGradient id="depression1" cx="300" cy="250" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#120188" />
+      <stop offset="40%" stop-color="#120188" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#120188" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#eeeeee" />
+    </radialGradient>
+    
+    <radialGradient id="depression2" cx="300" cy="250" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#120188" />
+      <stop offset="40%" stop-color="#120188" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#120188" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#eeeeee" />
+    </radialGradient>
+  </defs>
+
+
+
+  
+  <!-- Northeast trajectory path (appears first) -->
+<line x1="300" y1="250" x2="300" y2="250" stroke="#000000" stroke-width="1" stroke-dasharray="8,5" opacity="1">
+    <!-- Only visible in first half of animation cycle -->
+    <animate attributeName="opacity" values="0;1;1;0;0;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.15;0.48;0.5;0.99;1;1" />
+    <animate attributeName="x2" values="300;380" begin="0s" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="y2" values="250;150" begin="0s" dur="8s" repeatCount="indefinite" />
+</line>
+
+<!-- Northwest trajectory path (appears in second half) -->
+<line x1="300" y1="250" x2="300" y2="250" stroke="#000000" stroke-width="1" stroke-dasharray="8,5" opacity="1">
+    <!-- Only visible in second half of animation cycle -->
+    <animate attributeName="opacity" values="0;0;1;1;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.5;0.55;0.99;1;1" />
+    <animate attributeName="x2" values="300;220" begin="8s" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="y2" values="250;150" begin="8s" dur="8s" repeatCount="indefinite" />
+</line>
+  
+  <!-- First depression (moving northwest) - ALWAYS VISIBLE -->
+  <ellipse cx="300" cy="250" rx="130" ry="80" fill="url(#depression1)">
+    <!-- Animation for the depression to move northwest -->
+    <animateMotion dur="16s" repeatCount="indefinite" 
+                  path="M0,0 L-80,-100 M0,0 L-80,-100" 
+                  keyTimes="0;0.25;0.5;0.75"
+                  calcMode="spline"
+                  keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+  </ellipse>
+  
+  <!-- Second depression (moving northeast) - ALWAYS VISIBLE -->
+  <ellipse cx="300" cy="250" rx="130" ry="80" fill="url(#depression2)">
+    <!-- Animation for the depression to move northeast -->
+    <animateMotion dur="16s" repeatCount="indefinite" 
+                  path="M0,0 L80,-100 M0,0 L80,-100" 
+                  keyTimes="0;0.25;0.5;0.75"
+                  calcMode="spline"
+                  keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+  </ellipse>
+  
+  <!-- Path for the first (northwest) orange ball's orbit - SECOND HALF ONLY -->
+  <ellipse cx="300" cy="250" rx="70" ry="40" fill="none" stroke="#120188" stroke-width="1.5" stroke-dasharray="3 1" opacity="0.8">
+    <!-- Only visible in second half of animation cycle -->
+    <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.49;0.62;0.99;1;1" />
+    <!-- Animation for the orbit path to follow the first orange ball -->
+    <animateMotion dur="16s" repeatCount="indefinite" 
+                  path="M0,0 L-80,-100 M0,0 L-80,-100" 
+                  keyTimes="0;0.25;0.5;0.75"
+                  calcMode="spline"
+                  keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+  </ellipse>
+  
+  <!-- Path for the second (northeast) orange ball's orbit - FIRST HALF ONLY -->
+  <ellipse cx="300" cy="250" rx="70" ry="40" fill="none" stroke="#120188" stroke-width="1.5" stroke-dasharray="3 1" opacity="0.8">
+    <!-- Only visible in first half of animation cycle -->
+    <animate attributeName="opacity" values="0.8;0.8;0;0;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.49;0.5;0.99;1;1" />
+    <!-- Animation for the orbit path to follow the second orange ball -->
+    <animateMotion dur="16s" repeatCount="indefinite" 
+                  path="M0,0 L80,-100 M0,0 L80,-100" 
+                  keyTimes="0;0.25;0.5;0.75"
+                  calcMode="spline"
+                  keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+  </ellipse>
+  
+  <!-- First mass (northwest orange ball) - ALWAYS VISIBLE -->
+  <g id="northwest-ball">
+    <!-- Contact shadow where ball meets sheet -->
+    <ellipse cx="300" cy="252" rx="22" ry="11" fill="rgba(0,0,0,0.4)" filter="blur(1px)">
+      <!-- Animation for shadow to move northwest -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                    path="M0,0 L-80,-100 M0,0 L-80,-100" 
+                    keyTimes="0;0.25;0.5;0.75"
+                    calcMode="spline"
+                    keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+    </ellipse>
+    <!-- The ball itself -->
+    <circle cx="300" cy="250" r="20" fill="#fc3f41" stroke="#000000" stroke-width="1">
+      <animate attributeName="r" values="20;21;20" dur="3s" repeatCount="indefinite" />
+      <!-- Animation for ball to move northwest -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                    path="M0,0 L-80,-100 M0,0 L-80,-100" 
+                    keyTimes="0;0.25;0.5;0.75"
+                    calcMode="spline"
+                    keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+    </circle>
+  </g>
+  
+  <!-- Second mass (northeast orange ball) - ALWAYS VISIBLE -->
+  <g id="northeast-ball">
+    <!-- Contact shadow where ball meets sheet -->
+    <ellipse cx="300" cy="252" rx="22" ry="11" fill="rgba(0,0,0,0.4)" filter="blur(1px)">
+      <!-- Animation for shadow to move northeast -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                    path="M0,0 L80,-100 M0,0 L80,-100" 
+                    keyTimes="0;0.25;0.5;0.75"
+                    calcMode="spline"
+                    keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+    </ellipse>
+    <!-- The ball itself -->
+    <circle cx="300" cy="250" r="20" fill="#fc3f41" stroke="#000000" stroke-width="1">
+      <animate attributeName="r" values="20;21;20" dur="3s" repeatCount="indefinite" />
+      <!-- Animation for ball to move northeast -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                    path="M0,0 L80,-100 M0,0 L80,-100" 
+                    keyTimes="0;0.25;0.5;0.75"
+                    calcMode="spline"
+                    keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+    </circle>
+  </g>
+  
+  <!-- Small blue ball orbiting the right (northeast) orange ball - FIRST HALF ONLY -->
+  <g id="blue-ball">
+    <!-- Only visible in first half of animation cycle -->
+    <animate attributeName="opacity" values="1;1;0;0;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.49;0.5;0.99;1;1" />
+    
+    <!-- Blue ball exactly on the orbit path -->
+    <circle cx="300" cy="250" r="7" fill="#120188" stroke="#120188" stroke-width="1">
+      <!-- Follow the northeast orange ball -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                   path="M0,0 L80,-100 M0,0 L80,-100" 
+                   keyTimes="0;0.25;0.5;0.75"
+                   calcMode="spline"
+                   keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+      <!-- Orbit around the orange ball, matching the orbit path exactly -->
+      <animateMotion dur="4s" repeatCount="indefinite" 
+                     path="M70,0 a70,40 0 1,1 -140,0 a70,40 0 1,1 140,0" 
+                     additive="sum" />
+    </circle>
+  </g>
+  
+  <!-- Black ball orbiting the left (northwest) orange ball - SECOND HALF ONLY -->
+  <g id="black-ball">
+    <!-- Only visible in second half of animation cycle -->
+    <animate attributeName="opacity" values="0;0;1;1;0;0" dur="16s" repeatCount="indefinite" keyTimes="0;0.49;0.62;0.99;1;1" />
+    
+    <!-- Black ball exactly on the orbit path -->
+    <circle cx="300" cy="250" r="7" fill="#120188" stroke="#120188" stroke-width="1">
+      <!-- Follow the northwest orange ball -->
+      <animateMotion dur="16s" repeatCount="indefinite" 
+                   path="M0,0 L-80,-100 M0,0 L-80,-100" 
+                   keyTimes="0;0.25;0.5;0.75"
+                   calcMode="spline"
+                   keySplines="0.5 0 0.5 1; 0 0 0 0; 0.5 0 0.5 1" />
+      <!-- Orbit around the orange ball, matching the orbit path exactly -->
+      <animateMotion dur="4s" repeatCount="indefinite" 
+                     path="M70,0 a70,40 0 1,1 -140,0 a70,40 0 1,1 140,0" 
+                     additive="sum" />
+    </circle>
+  </g>
+</svg>

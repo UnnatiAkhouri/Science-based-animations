@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Hole Information Paradox</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+    .container {
+      width: 800px;
+      height: 600px;
+      position: relative;
+    }
+    .left-text {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      width: 200px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000000;
+      line-height: 1.4;
+      opacity: 0;
+      animation: fadeInLeft 2s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+    .right-text {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      width: 200px;
+      text-align: right;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000000;
+      line-height: 1.4;
+      opacity: 0;
+      animation: fadeInRight 2s ease-in-out forwards;
+      animation-delay: 7s;
+    }
+    @keyframes fadeInLeft {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      0% { opacity: 0; transform: translateX(20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-text">General relativity predicts ordered information is lost upon entering a blackhole</div>
+    <div class="right-text">Quantum mechanics predicts blackholes radiate disordered information</div>
+    <svg width="800" height="600" viewBox="0 0 800 600">
+      <!-- Background -->
+      <rect width="800" height="600" fill="#ffffff" />
+      
+      <!-- Left Wire (appears at start) - now at bottom and black -->
+      <path d="M250,300 L200,300 L200,450" stroke="#000000" stroke-width="1.5" fill="none" opacity="0">
+        <animate attributeName="opacity" 
+                values="0; 0; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1" 
+                keyTimes="0; 0.05; 0.1; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.9; 1"
+                dur="12s" 
+                repeatCount="indefinite" />
+      </path>
+      
+      <!-- Right Wire (appears after blackhole begins evaporating) - now at bottom and black -->
+      <path d="M550,300 L600,300 L600,450" stroke="#000000" stroke-width="1.5" fill="none" opacity="0">
+        <animate attributeName="opacity" 
+                values="0; 0; 0; 0; 0; 0; 0; 1; 1; 1; 1; 0; 0" 
+                keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.5; 0.55; 0.6; 0.7; 0.8; 0.9; 0.95; 1"
+                dur="12s" 
+                repeatCount="indefinite" />
+      </path>
+      
+      <!-- Defs for gradients -->
+      <defs>
+        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#120188;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#354095;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="blueRedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#120188;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#fc3f41;stop-opacity:0.7" />
+        </linearGradient>
+        <linearGradient id="lightBlueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#120188;stop-opacity:0.7" />
+          <stop offset="100%" style="stop-color:#eeeeee;stop-opacity:0.9" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Black Hole with size animation -->
+      <g>
+        <!-- Black Hole Center -->
+        <circle cx="400" cy="300" r="60" fill="#000000">
+          <!-- Start expansion after first solid reaches center (20%), 
+               finish expanding after all solids are in (55%),
+               pause until squiggles start moving (65%), 
+               then shrink to 0 as squiggles move away (65-90%) -->
+          <animate attributeName="r" 
+                  values="60; 60; 65; 70; 75; 80; 85; 90; 90; 90; 85; 75; 65; 55; 45; 35; 25; 15; 5; 0; 0; 60" 
+                  keyTimes="0; 0.2; 0.25; 0.3; 0.35; 0.4; 0.45; 0.5; 0.55; 0.65; 0.7; 0.75; 0.8; 0.825; 0.85; 0.875; 0.9; 0.925; 0.95; 0.975; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Concentric Ring 1 -->
+        <circle cx="400" cy="300" r="100" fill="none" stroke="#888888" stroke-width="2" opacity="0.2">
+          <animate attributeName="r" 
+                  values="100; 100; 110; 120; 130; 140; 150; 160; 160; 160; 150; 140; 120; 100; 80; 60; 40; 20; 0; 0; 0; 100" 
+                  keyTimes="0; 0.2; 0.25; 0.3; 0.35; 0.4; 0.45; 0.5; 0.55; 0.65; 0.7; 0.75; 0.8; 0.825; 0.85; 0.875; 0.9; 0.925; 0.95; 0.975; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Concentric Ring 2 -->
+        <circle cx="400" cy="300" r="80" fill="none" stroke="#888888" stroke-width="3" opacity="0.4">
+          <animate attributeName="r" 
+                  values="80; 80; 85; 90; 95; 100; 110; 120; 120; 120; 110; 100; 90; 75; 60; 45; 30; 15; 0; 0; 0; 80" 
+                  keyTimes="0; 0.2; 0.25; 0.3; 0.35; 0.4; 0.45; 0.5; 0.55; 0.65; 0.7; 0.75; 0.8; 0.825; 0.85; 0.875; 0.9; 0.925; 0.95; 0.975; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Concentric Ring 3 -->
+        <circle cx="400" cy="300" r="70" fill="none" stroke="#888888" stroke-width="4" opacity="0.6">
+          <animate attributeName="r" 
+                  values="70; 70; 75; 80; 85; 90; 95; 100; 100; 100; 90; 80; 70; 60; 50; 40; 30; 20; 10; 0; 0; 70" 
+                  keyTimes="0; 0.2; 0.25; 0.3; 0.35; 0.4; 0.45; 0.5; 0.55; 0.65; 0.7; 0.75; 0.8; 0.825; 0.85; 0.875; 0.9; 0.925; 0.95; 0.975; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+        </circle>
+      </g>
+      
+      <!-- Platonic Solid 1: Tetrahedron -->
+      <g>
+        <path d="M-15,-15 L15,-15 L0,20 Z M-15,-15 L0,20 L0,-5 Z M15,-15 L0,-5 L0,20 Z" fill="url(#blueGradient)" stroke="#eeeeee" stroke-width="1">
+          <animate attributeName="opacity" 
+                  values="0.9; 0.9; 0.9; 0.8; 0.5; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0.9; 0.9" 
+                  keyTimes="0; 0.05; 0.15; 0.175; 0.19; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 0.995; 0.998; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="translate" 
+                          values="100,250; 150,270; 200,280; 300,290; 350,295; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 100,250; 100,250; 100,250; 100,250" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.18; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 0.995; 0.998; 1"
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="scale" 
+                          values="1; 1; 0.9; 0.7; 0.4; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 1; 1; 1; 1" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.18; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 0.995; 0.998; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0; 60; 120; 240; 480; 720; 720; 720; 720; 720; 720; 720; 720; 720; 720; 720; 720; 720; 0; 0; 0; 0" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.18; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 0.995; 0.998; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+        </path>
+      </g>
+      
+      <!-- Platonic Solid 2: Cube -->
+      <g>
+        <path d="M-10,-10 L10,-10 L10,10 L-10,10 Z M-10,-10 L-5,-15 L15,-15 L10,-10 Z M10,-10 L15,-15 L15,5 L10,10 Z M-10,10 L-5,5 L15,5 L10,10 Z M-10,-10 L-5,-15 L-5,5 L-10,10 Z" fill="url(#lightBlueGradient)" stroke="#eeeeee" stroke-width="1">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0.9; 0.9; 0.9; 0.8; 0.5; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.18; 0.2; 0.22; 0.23; 0.25; 0.28; 0.3; 0.33; 0.35; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.95; 0.98; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="translate" 
+                          values="140,320; 140,320; 140,320; 140,320; 140,320; 180,315; 220,310; 260,305; 320,302; 360,301; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 140,320; 140,320; 140,320; 140,320" 
+                          keyTimes="0; 0.1; 0.18; 0.2; 0.22; 0.23; 0.25; 0.28; 0.3; 0.33; 0.35; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.95; 0.98; 0.99; 1"
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="scale" 
+                          values="1; 1; 1; 1; 1; 1; 0.9; 0.8; 0.5; 0.3; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 1; 1; 1; 1" 
+                          keyTimes="0; 0.1; 0.18; 0.2; 0.22; 0.23; 0.25; 0.28; 0.3; 0.33; 0.35; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.95; 0.98; 0.99; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0; 0; 0; 0; 0; 30; 60; 120; 180; 270; 360; 360; 360; 360; 360; 360; 360; 360; 0; 0; 0; 0" 
+                          keyTimes="0; 0.1; 0.18; 0.2; 0.22; 0.23; 0.25; 0.28; 0.3; 0.33; 0.35; 0.4; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.95; 0.98; 0.99; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+        </path>
+      </g>
+      
+      <!-- Platonic Solid 3: Octahedron -->
+      <g>
+        <path d="M0,0 L10,10 L0,20 L-10,10 Z M0,0 L10,10 L20,0 L10,-10 Z M0,0 L10,-10 L0,-20 L-10,-10 Z M0,0 L-10,-10 L-20,0 L-10,10 Z" fill="url(#blueRedGradient)" stroke="#eeeeee" stroke-width="1">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0.9; 0.9; 0.9; 0.8; 0.5; 0; 0; 0; 0; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.32; 0.33; 0.34; 0.35; 0.36; 0.37; 0.38; 0.4; 0.43; 0.45; 0.47; 0.5; 0.6; 0.7; 0.8; 0.9; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="translate" 
+                          values="80,350; 80,350; 80,350; 80,350; 80,350; 80,350; 80,350; 80,350; 80,350; 80,350; 150,340; 200,330; 250,320; 300,310; 350,305; 400,300; 400,300; 400,300; 80,350; 80,350; 80,350; 80,350" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.32; 0.33; 0.34; 0.35; 0.36; 0.37; 0.38; 0.4; 0.43; 0.45; 0.47; 0.5; 0.6; 0.7; 0.8; 0.9; 1"
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="scale" 
+                          values="1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 0.9; 0.7; 0.5; 0.3; 0.1; 0.1; 0.1; 1; 1; 1; 1" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.32; 0.33; 0.34; 0.35; 0.36; 0.37; 0.38; 0.4; 0.43; 0.45; 0.47; 0.5; 0.6; 0.7; 0.8; 0.9; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 30; 60; 120; 180; 240; 270; 270; 270; 0; 0; 0; 0" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.32; 0.33; 0.34; 0.35; 0.36; 0.37; 0.38; 0.4; 0.43; 0.45; 0.47; 0.5; 0.6; 0.7; 0.8; 0.9; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+        </path>
+      </g>
+      
+      <!-- Platonic Solid 4: Dodecahedron -->
+      <g>
+        <path d="M-5,-8 L5,-8 L8,-3 L5,3 L-5,3 L-8,-3 Z M-5,-8 L5,-8 L3,-14 L-3,-14 Z M5,-8 L8,-3 L14,-5 L10,-10 Z M8,-3 L5,3 L10,8 L14,0 Z M5,3 L-5,3 L-3,10 L3,10 Z M-5,3 L-8,-3 L-14,0 L-10,8 Z M-8,-3 L-5,-8 L-10,-10 L-14,-5 Z" fill="url(#blueGradient)" stroke="#eeeeee" stroke-width="1">
+          <animate attributeName="opacity" 
+                  values="0.9; 0.9; 0.9; 0.9; 0.9; 0.9; 0.9; 0.8; 0.5; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0.9; 0.9" 
+                  keyTimes="0; 0.05; 0.1; 0.15; 0.2; 0.25; 0.4; 0.43; 0.45; 0.48; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="translate" 
+                          values="120,220; 140,230; 160,240; 180,250; 200,260; 250,270; 300,285; 340,295; 370,298; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 400,300; 120,220; 120,220; 120,220; 120,220" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.2; 0.25; 0.4; 0.43; 0.45; 0.48; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 1"
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="scale" 
+                          values="1; 1; 1; 1; 0.9; 0.8; 0.6; 0.4; 0.2; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 0.1; 1; 1; 1; 1" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.2; 0.25; 0.4; 0.43; 0.45; 0.48; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0; 20; 40; 60; 80; 100; 120; 150; 170; 180; 180; 180; 180; 180; 180; 180; 180; 180; 0; 0; 0; 0" 
+                          keyTimes="0; 0.05; 0.1; 0.15; 0.2; 0.25; 0.4; 0.43; 0.45; 0.48; 0.5; 0.6; 0.7; 0.8; 0.85; 0.9; 0.92; 0.94; 0.96; 0.98; 0.99; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+        </path>
+      </g>
+      
+      <!-- Platonic Solid 5: Icosahedron -->
+      <g>
+        <path d="M0,0 L5,9 L-5,9 Z M0,0 L5,9 L10,0 Z M0,0 L10,0 L5,-9 Z M0,0 L5,-9 L-5,-9 Z M0,0 L-5,-9 L-10,0 Z M0,0 L-10,0 L-5,9 Z M10,0 L5,9 L13,5 Z M5,9 L-5,9 L0,15 Z M-5,9 L-10,0 L-13,5 Z M-10,0 L-5,-9 L-13,-5 Z M-5,-9 L5,-9 L0,-15 Z M5,-9 L10,0 L13,-5 Z" fill="url(#lightBlueGradient)" stroke="#120188" stroke-width="1">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0.9; 0.9; 0.9; 0.8; 0.5; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.35; 0.36; 0.37; 0.38; 0.39; 0.40; 0.41; 0.42; 0.43; 0.44; 0.45; 0.48; 0.5; 0.52; 0.54; 0.6; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="translate" 
+                          values="160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 160,280; 180,285; 220,290; 280,295; 340,297; 380,299; 400,300; 400,300; 160,280" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.35; 0.36; 0.37; 0.38; 0.39; 0.40; 0.41; 0.42; 0.43; 0.44; 0.45; 0.48; 0.5; 0.52; 0.54; 0.6; 1"
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="scale" 
+                          values="1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 0.9; 0.7; 0.5; 0.3; 0.1; 0.1; 1" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.35; 0.36; 0.37; 0.38; 0.39; 0.40; 0.41; 0.42; 0.43; 0.44; 0.45; 0.48; 0.5; 0.52; 0.54; 0.6; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 30; 60; 90; 180; 270; 360; 360; 0" 
+                          keyTimes="0; 0.1; 0.2; 0.25; 0.3; 0.35; 0.36; 0.37; 0.38; 0.39; 0.40; 0.41; 0.42; 0.43; 0.44; 0.45; 0.48; 0.5; 0.52; 0.54; 0.6; 1"
+                          additive="sum" 
+                          dur="12s" 
+                          repeatCount="indefinite" />
+        </path>
+      </g>
+      
+      <!-- Squiggly Lines with more divergent trajectories -->
+      <g>
+        <!-- Squiggly Line 1 (upward trajectory) -->
+        <path d="M480,300 Q490,295 500,300 Q510,305 520,300 Q530,295 540,300 Q550,305 560,300" stroke="#fc3f41" stroke-width="2" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.71; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 400,-100; 400,-100; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.71; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 2 (downward trajectory) -->
+        <path d="M480,315 Q490,310 500,315 Q510,320 520,315 Q530,310 540,315 Q550,320 560,315" stroke="#fc3f41" stroke-width="2" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.72; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 400,120; 400,120; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.72; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 3 (straight trajectory) -->
+        <path d="M480,285 Q490,280 500,285 Q510,290 520,285 Q530,280 540,285 Q550,290 560,285" stroke="#fc3f41" stroke-width="2" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.73; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 440,0; 440,0; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.73; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 4 (upper diagonal trajectory) -->
+        <path d="M480,330 Q487,325 494,330 Q501,335 508,330 Q515,325 522,330 Q529,335 536,330 Q543,325 550,330" stroke="#fc3f41" stroke-width="1.5" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.71; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 380,-150; 380,-150; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.71; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 5 (lower diagonal trajectory) -->
+        <path d="M480,270 Q487,265 494,270 Q501,275 508,270 Q515,265 522,270 Q529,275 536,270 Q543,265 550,270" stroke="#fc3f41" stroke-width="1.5" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.72; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 390,170; 390,170; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.72; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 6 (slight upward trajectory) -->
+        <path d="M480,305 Q485,302 490,305 Q495,308 500,305 Q505,302 510,305 Q515,308 520,305 Q525,302 530,305" stroke="#fc3f41" stroke-width="1" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.73; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 430,-40; 430,-40; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.73; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>
+        
+        <!-- Squiggly Line 7 (slight downward trajectory) -->
+        <path d="M480,295 Q485,292 490,295 Q495,298 500,295 Q505,292 510,295 Q515,298 520,295 Q525,292 530,295" stroke="#fc3f41" stroke-width="1" fill="none">
+          <animate attributeName="opacity" 
+                  values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0" 
+                  keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.74; 0.85; 0.9; 0.95; 1"
+                  dur="12s" 
+                  repeatCount="indefinite" />
+          <animateTransform attributeName="transform" 
+                           type="translate" 
+                           values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 410,55; 410,55; 0,0; 0,0" 
+                           keyTimes="0; 0.1; 0.2; 0.3; 0.4; 0.45; 0.5; 0.55; 0.6; 0.62; 0.64; 0.65; 0.66; 0.67; 0.68; 0.69; 0.7; 0.74; 0.85; 0.9; 0.95; 1"
+                           dur="12s" 
+                           repeatCount="indefinite" />
+        </path>

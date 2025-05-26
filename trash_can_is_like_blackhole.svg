@@ -1,0 +1,272 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Black hole gradient -->
+    <radialGradient id="blackHole" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#333333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Event horizon glow -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="85%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.8" />
+    </radialGradient>
+    
+    <!-- Trash can gradient -->
+    <linearGradient id="trashCan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#666666" />
+      <stop offset="50%" style="stop-color:#444444" />
+      <stop offset="100%" style="stop-color:#222222" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#001122"/>
+  
+  <!-- Stars -->
+  <circle cx="100" cy="100" r="1" fill="white" opacity="0.8"/>
+  <circle cx="200" cy="80" r="1" fill="white" opacity="0.6"/>
+  <circle cx="650" cy="120" r="1" fill="white" opacity="0.9"/>
+  <circle cx="720" cy="200" r="1" fill="white" opacity="0.7"/>
+  <circle cx="50" cy="300" r="1" fill="white" opacity="0.8"/>
+  <circle cx="750" cy="450" r="1" fill="white" opacity="0.6"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="500" width="800" height="100" fill="#001122"/>
+  
+  <!-- Person (will get sucked in) -->
+<g id="person" transform="translate(150, 400)">
+  <!-- Head -->
+  <circle cx="0" cy="-20" r="12" fill="#8B4513"/>
+  <!-- Hair -->
+  <path d="M -12,-25 Q 0,-32 12,-25 Q 10,-20 8,-15 Q 0,-18 -8,-15 Q -10,-20 -12,-25" fill="#8B4513"/>
+  <!-- Dress -->
+  <path d="M -10,-8 Q -12,5 -15,22 L 15,22 Q 12,5 10,-8 Z" fill="#FFC5D3"/>
+  <!-- Arms -->
+  <rect x="-18" y="-5" width="8" height="4" fill="#8B4513"/>
+  <rect x="10" y="-5" width="8" height="4" fill="#8B4513"/>
+  <!-- Legs (showing under dress) -->
+  <rect x="-4" y="22" width="3" height="15" fill="#8B4513"/>
+  <rect x="1" y="22" width="3" height="15" fill="#8B4513"/>
+  <!-- Shoes -->
+  <ellipse cx="-2.5" cy="37" rx="3" ry="2" fill="#A94064"/>
+  <ellipse cx="2.5" cy="37" rx="3" ry="2" fill="#A94064"/>
+  
+  <animateTransform attributeName="transform" type="translate"
+    values="150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 150,400; 400,350"
+    dur="24s" repeatCount="indefinite"/>
+  <animateTransform attributeName="transform" type="opacity" additive="sum"
+    values="1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 0.5; 0"
+    dur="24s" repeatCount="indefinite"/>
+</g>
+  
+  <!-- Trash items -->
+  <!-- Item 1: Banana peel -->
+  <g id="banana">
+    <path d="M 350,350 Q 355,340 360,350 Q 365,340 370,350" 
+          fill="#ffff00" stroke="#cccc00" stroke-width="2"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,0; 40,0; 40,-20; 40,-20; 40,-20; 40,-20; 40,-20; 40,-20; 40,-20; 40,-20; 40,-20"
+      dur="24s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="opacity" additive="sum"
+      values="1; 1; 1; 0; 0; 0; 0; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </g>
+  
+  <!-- Item 2: Pizza slice -->
+  <g id="pizza">
+    <path d="M 100,380 L 120,360 L 140,380 Z" fill="#ffaa00"/>
+    <circle cx="110" cy="375" r="2" fill="#cc0000"/>
+    <circle cx="125" cy="370" r="2" fill="#00aa00"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,0; 0,0; 0,0; 300,-30; 300,-30; 300,-30; 300,-30; 300,-30; 300,-30; 300,-30; 300,-30"
+      dur="24s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="opacity" additive="sum"
+      values="1; 1; 1; 1; 1; 0; 0; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </g>
+  
+ <g id="phone">
+  <rect x="650" y="150" width="12" height="20" fill="#2c2c2c" rx="2"/>
+  <rect x="651" y="152" width="10" height="14" fill="#87CEEB"/>
+  <circle cx="656" cy="168" r="1.5" fill="#ffffff"/>
+  <animateTransform attributeName="transform" type="translate"
+    values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; -250,200; -250,200"
+    dur="24s" repeatCount="indefinite"/>
+  <animate attributeName="opacity"
+    values="1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1; 0"
+    dur="24s" repeatCount="indefinite"/>
+</g>
+
+  <!-- Item 3: Soda can -->
+  <g id="sodaCan">
+    <rect x="550" y="330" width="20" height="40" fill="#cc0000" rx="10"/>
+    <rect x="555" y="335" width="10" height="5" fill="#ffffff"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; -150,20; -150,20; -150,20; -150,20; -150,20; -150,20"
+      dur="24s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="opacity" additive="sum"
+      values="1; 1; 1; 1; 1; 1; 1; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </g>
+  
+  <!-- Item 4: Coffee cup -->
+  <g id="coffee">
+    <rect x="200" y="360" width="16" height="20" fill="#8B4513" rx="2"/>
+    <ellipse cx="208" cy="360" rx="8" ry="3" fill="#4A4A4A"/>
+    <path d="M 216,365 Q 225,365 225,375 Q 225,380 216,380" 
+          fill="none" stroke="#8B4513" stroke-width="2"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 0,0; 200,-10; 200,-10; 200,-10; 200,-10"
+      dur="24s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="opacity" additive="sum"
+      values="1; 1; 1; 1; 1; 1; 1; 1; 1; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </g>
+  
+  <!-- Item 5: Paper -->
+  <g id="paper">
+    <rect x="300" y="340" width="15" height="20" fill="#ffffff" 
+          transform="rotate(15 307.5 350)"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,0; 0,0; 0,0; 0,0; 100,10"
+      dur="24s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="opacity" additive="sum"
+      values="1; 1; 1; 1; 1; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- Trash Can / Black Hole -->
+  <g id="trashCan" transform="translate(400, 300)">
+    <!-- Trash can body (becomes black hole) -->
+      <rect x="-60" y="0" width="120" height="150" fill="url(#trashCan)" rx="15">
+      <animate attributeName="fill" 
+        values="url(#trashCan); url(#trashCan); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole); url(#blackHole)"
+        dur="24s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Trash can lid -->
+    <ellipse cx="0" cy="0" rx="65" ry="12" fill="#888888" opacity="1">
+      <animate attributeName="opacity" 
+        values="1; 1; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0"
+        dur="24s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Black hole center -->
+    <circle cx="0" cy="75" r="50" fill="url(#blackHole)" opacity="0">
+      <animate attributeName="opacity" 
+        values="0; 0; 1; 1; 1; 1; 1; 1; 1; 1; 1; 1"
+        dur="24s" repeatCount="indefinite"/>
+      <animate attributeName="r" 
+  	values="50; 50; 50; 55; 55; 55; 60; 60; 60; 70; 100; 180"
+        dur="24s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Event horizon glow -->
+    <circle cx="0" cy="75" r="55" fill="url(#glow)" opacity="0">
+      <animate attributeName="opacity" 
+        values="0; 0; 0.5; 0.5; 0.5; 0.5; 0.7; 0.7; 0.7; 0.9; 1; 1"
+        dur="24s" repeatCount="indefinite"/>
+      <animate attributeName="r" 
+  	values="55; 55; 55; 60; 60; 60; 65; 65; 65; 75; 105; 190"
+ 	 dur="24s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Swirling accretion disk -->
+    <g opacity="0">
+      <animate attributeName="opacity" 
+        values="0; 0; 0.3; 0.3; 0.3; 0.3; 0.5; 0.5; 0.5; 0.7; 0.9; 1"
+        dur="24s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate"
+  	values="0 0 75; 360 0 75; 720 0 75; 1080 0 75; 1440 0 75; 1800 0 75; 2160 0 75; 2520 0 75; 2880 0 75; 3240 0 75; 3600 0 75; 4320 0 75"
+  	dur="24s" repeatCount="indefinite"/>
+      
+        <ellipse cx="0" cy="75" rx="65" ry="12" fill="none" 
+         stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+	<ellipse cx="0" cy="75" rx="80" ry="20" fill="none" 
+         stroke="#ffffff" stroke-width="1" opacity="0.2"/>
+	<ellipse cx="0" cy="75" rx="100" ry="25" fill="none" 
+         stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+    </g>
+  </g>
+  
+  <!-- Gravitational waves/distortion lines -->
+  <g id="distortion" opacity="0">
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 0; 0; 0.3; 0.3; 0.3; 0.5; 0.7; 1"
+      dur="24s" repeatCount="indefinite"/>
+    
+    <circle cx="400" cy="350" r="200" fill="none" 
+            stroke="#ffffff" stroke-width="1" opacity="0.1">
+      <animate attributeName="r" 
+        values="200; 200; 200; 220; 220; 220; 250; 250; 250; 300; 400; 600"
+        dur="24s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="350" r="300" fill="none" 
+            stroke="#ffffff" stroke-width="1" opacity="0.05">
+      <animate attributeName="r" 
+        values="300; 300; 300; 320; 320; 320; 350; 350; 350; 400; 500; 700"
+        dur="24s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Text overlay -->
+  <text x="400" y="50" text-anchor="middle" fill="white" font-family="Geneva, sans-serif" font-size="24" font-weight="bold">
+    The Trash Can that ate Everything
+  </text>
+
+
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    Trash cans seem like blackholes—garbage goes in and disappears
+    <animate attributeName="opacity" 
+      values="1; 1; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+  
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    Like how things entering blackholes are gone forever
+    <animate attributeName="opacity" 
+      values="0; 0; 1; 1; 0; 0; 0; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+  
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    But each thing that enters makes the blackhole grow
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 1; 1; 0; 0; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+  
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    Until it's big enough to consume everything!
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 0; 0; 1; 1; 0; 0; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+  
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    Our trash seems gone forever too...
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 0; 0"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+  
+ <text x="400" y="150" text-anchor="middle" fill="#FFFEF7" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    But it's all piling up—unless we act now!
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Warning text that appears -->
+  <text x="400" y="550" text-anchor="middle" fill="#ff4444" font-family="Geneva, sans-serif" font-size="18" opacity="0">
+    WARNING: Event Horizon Exceeded. Prepare for the inevitable doom!
+    <animate attributeName="opacity" 
+      values="0; 0; 0; 0; 0; 0; 0; 0; 0; 1; 1; 1"
+      dur="24s" repeatCount="indefinite"/>
+  </text>
+</svg>
